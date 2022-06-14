@@ -6,7 +6,7 @@ import About from './components/About';
 function App() {
   return (
     <Router>
-      <div className='sm:px-10 bg-[#36454f] h-screen'>
+      <div className='sm:px-10 md:px-44 bg-[#36454f]'>
         <div className='bg-white h-full'>
           <Header />
           <Routes>

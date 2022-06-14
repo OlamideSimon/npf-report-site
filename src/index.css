@@ -4,7 +4,7 @@
 
 @layer components {
   .link {
-    @apply hover:bg-slate-50 p-5 text-[#c8d8e4]
+    @apply hover:bg-slate-50 hover:text-[#2b6777] p-5 text-[#c8d8e4]
   }
   .icons {
     @apply hover:cursor-pointer

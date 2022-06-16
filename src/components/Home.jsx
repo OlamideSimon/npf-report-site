@@ -1,5 +1,5 @@
 import React from 'react'
-import { crimes } from '../crimeData'
+import { crimes } from '../utils'
 import mopol from './assets/mopol.jpg'
 import Card from './Card'
 
@@ -19,7 +19,7 @@ const Home = () => {
             <q>The Police is your friend</q>
           </div>
         </div>
-        <div className='space-y-2'>
+        <div className=''>
           {crimes.map(({name, image, description}, index) => (
             <Card 
               key={index}

@@ -39,47 +39,42 @@ const Report = () => {
         if (state === "" || description === "") {
           toast.error("Crime location with detailed description is required");
         } else {
-          const getData = {
-            crime,
-            location: state,
-            description,
-          };
-          console.log(getData)
-          setIsLoading(true);
-          fetch('https://police-api22.herokuapp.com/api/crimes', {
-            method: 'POST',
-            mode: 'cors',
-            body: JSON.stringify(getData),
-          })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
+            setIsLoading(true)
+            let headersList = {
+                "Accept": "*/*",
+                "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+                "Content-Type": "application/json"
+            }
+            
+            let bodyContent = JSON.stringify({
+                "location": state,
+                "crime": crime,
+                "description": description
+            });
+            
+            fetch("https://police-api22.herokuapp.com/api/crimes", { 
+                method: "POST",
+                body: bodyContent,
+                headers: headersList
+            }).then(function(response) {
+                return response.text()
+            }).then(function(data) {
+                toast.success(data)
                 setIsLoading(false)
-                toast.success("Crime reported successfully")
                 setFormData({
-                    state: "",
-                    description: "",
-                });
+                    state: '',
+                    description: ''
+                })
             }).catch(err => {
-                console.log(err)
+                toast.error('Error making report!')
                 setIsLoading(false)
-                toast.error("Error reporting crime")
                 setFormData({
-                    state: "",
-                    description: "",
-                });
+                    state: '',
+                    description: ''
+                })
             })
-        //   const response = await axios.post(
-        //     "https://police-api22.herokuapp.com/api/crimes",
-        //     getData
-        //   );
-        //   toast.success(response.data);
-        //   setFormData({
-        //     state: "Abia",
-        //     description: "",
-        //   });
         }
-      };
+    };
 
     return (
         <div>

@@ -26,6 +26,10 @@ const Report = () => {
         setRandomCrime(rand3)
     }, [crime])
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const onChange = (e) => {
         setFormData((prevState) => ({
           ...prevState,
